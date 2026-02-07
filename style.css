@@ -401,7 +401,7 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: url('../img/heroSection1.jpg');
+    background-image: url('./img/heroSection1.jpg');
     background-size: cover;
     background-position: center 35%;
     background-repeat: no-repeat;
@@ -544,7 +544,7 @@ body {
        (PRIMARY VISUAL)
     ========================= */
     .hero-bg-div {
-        background-image: url('../img/heroSectionMob.png');
+        background-image: url('./img/heroSectionMob.png');
         background-size: cover;
         background-position: center 35%;
     }
