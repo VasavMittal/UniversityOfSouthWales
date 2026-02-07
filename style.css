@@ -381,7 +381,7 @@ body {
     position: relative;
     width: 100%;
     max-width: 100vw;
-    height: 100vh;
+    height: 100vh !important;
     overflow: hidden;
 }
 
@@ -403,7 +403,7 @@ body {
     height: 100%;
     background-image: url('./img/heroSection1.jpg');
     background-size: cover;
-    background-position: center 35%;
+    background-position: center center;
     background-repeat: no-repeat;
     z-index: 0;
 }
