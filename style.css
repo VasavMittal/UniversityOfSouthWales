@@ -6,10 +6,15 @@
     --hero-sky-blue: #023d8d;
 }
 
+html {
+    overflow-x: hidden;
+}
 
 body {
     margin: 0;
     font-family: 'Poppins', sans-serif;
+    overflow-x: hidden;
+    width: 100%;
 }
 
 /* =========================
@@ -375,7 +380,8 @@ body {
 .hero-section {
     position: relative;
     width: 100%;
-    height: 95vh;
+    max-width: 100vw;
+    height: 100vh;
     overflow: hidden;
 }
 
@@ -388,12 +394,18 @@ body {
     z-index: 1;
 } */
 
-/* REAL IMAGE (NO CROPPING, NO ZOOM) */
-.hero-bg-img {
+/* BACKGROUND DIV WITH FULL IMAGE */
+.hero-bg-div {
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
-    object-position: center top; /* keeps tower & sky */
-    display: block;
+    background-image: url('../img/heroSection1.jpg');
+    background-size: cover;
+    background-position: center 35%;
+    background-repeat: no-repeat;
+    z-index: 0;
 }
 
 
@@ -403,6 +415,7 @@ body {
     top: 0;
     left: 0;
     width: 100%;
+    max-width: 100%;
     height: 100%;
 
     display: flex;
@@ -410,7 +423,8 @@ body {
     padding-top: 8vh;
 
     color: #ffffff;
-    z-index: 2; 
+    z-index: 2;
+    overflow: hidden;
 }
 
 /* =========================
@@ -418,7 +432,10 @@ body {
 ========================= */
 .hero-content {
     max-width: 100%;
+    width: 100%;
     padding-left: 4%;
+    padding-right: 4%;
+    box-sizing: border-box;
 }
 
 /* =========================
@@ -446,7 +463,7 @@ body {
    TEXT
 ========================= */
 .hero-title {
-    font-size: 44px;
+    font-size: 52px;
     font-weight: 700;
     line-height: 1.25;
     margin-bottom: 1.2rem;
@@ -455,7 +472,7 @@ body {
 .hero-badge {
     display: inline-block;
     background: rgba(255, 255, 255, 0.2);
-    font-size: 18px;
+    font-size: 20px;
     font-weight: 600;
     padding: 0.35rem 0.9rem;
     border-radius: 0.4rem;
@@ -472,7 +489,7 @@ body {
 }
 
 .hero-points li {
-    font-size: 18px;
+    font-size: 20px;
     margin-bottom: 0.9rem;
     padding-left: 1.4rem;
     position: relative;
@@ -516,19 +533,20 @@ body {
     .hero-section {
         position: relative;
         height: auto;
-        overflow: hidden;
+        min-height: 100vh;
+        max-width: 100vw;
+        overflow-x: hidden;
+        overflow-y: auto;
     }
 
     /* =========================
        BACKGROUND IMAGE
        (PRIMARY VISUAL)
     ========================= */
-    .hero-bg-img {
-        width: 100%;
-        height: 90vh;                 /* tall enough for sky + building */
-        object-fit: cover;
-        object-position: center 12%;  /* sky priority, building visible */
-        display: block;
+    .hero-bg-div {
+        background-image: url('../img/heroSectionMob.png');
+        background-size: cover;
+        background-position: center 35%;
     }
 
     /* =========================
@@ -560,13 +578,17 @@ body {
         top: 0;
         left: 0;
         width: 100%;
+        max-width: 100%;
         z-index: 2;
-        padding: 6vh 0 0;
+        padding: 4vh 0 0;
+        overflow: hidden;
     }
 
     .hero-content {
-        padding: 0 6%;
+        padding: 0 5%;
         text-align: center;
+        max-width: 100%;
+        box-sizing: border-box;
     }
 
     /* =========================
@@ -574,11 +596,13 @@ body {
     ========================= */
     .hero-logos {
         justify-content: center;
-        margin-bottom: 1.25rem;
+        margin-bottom: 1rem;
+        gap: 0.75rem;
     }
 
     .hero-logo {
-        max-height: 10vh;
+        max-height: 8vh;
+        width: auto;
     }
 
     /* .logo-divider {
@@ -589,21 +613,28 @@ body {
        TEXT
     ========================= */
     .hero-title {
-        font-size: 30px;
-        line-height: 1.3;
-        margin-bottom: 1rem;
+        font-size: 32px;
+        line-height: 1.25;
+        margin-bottom: 0.85rem;
     }
 
     .hero-badge {
-        font-size: 16px;
-        margin: 1rem auto 1.5rem;
+        font-size: 17px;
+        margin: 0.85rem auto 1.25rem;
         display: inline-block;
+        padding: 0.45rem 1rem;
+    }
+
+    .hero-points {
+        margin-bottom: 1rem;
+        padding-left: 0;
     }
 
     .hero-points li {
-        font-size: 16px;
-        margin-bottom: 0.75rem;
+        font-size: 18px;
+        margin-bottom: 0.65rem;
         text-align: left;
+        line-height: 1.4;
     }
 
     /* =========================
@@ -611,8 +642,206 @@ body {
     ========================= */
     .hero-btn {
         width: 100%;
-        padding: 0.9rem;
+        max-width: 100%;
+        padding: 0.85rem;
         margin-top: 1rem;
+        font-size: 16px;
+        box-sizing: border-box;
+    }
+}
+
+/* =========================
+   SMALL MOBILE (425px and below)
+========================= */
+@media (max-width: 425px) {
+    .hero-section {
+        min-height: 100vh;
+        max-width: 100vw;
+        overflow-x: hidden;
+    }
+
+    .hero-bg-div {
+        background-size: cover;
+        background-position: center 35%;
+    }
+
+    .hero-content-wrapper {
+        padding: 3vh 0 0;
+    }
+
+    .hero-content {
+        padding: 0 4%;
+    }
+
+    .hero-logos {
+        margin-bottom: 0.75rem;
+        gap: 0.5rem;
+    }
+
+    .hero-logo {
+        max-height: 7vh;
+    }
+
+    .hero-title {
+        font-size: 24px;
+        line-height: 1.2;
+        margin-bottom: 0.7rem;
+    }
+
+    .hero-badge {
+        font-size: 13px;
+        margin: 0.7rem auto 1rem;
+        padding: 0.4rem 0.85rem;
+    }
+
+    .hero-points {
+        margin-bottom: 0.85rem;
+    }
+
+    .hero-points li {
+        font-size: 14px;
+        margin-bottom: 0.55rem;
+        line-height: 1.35;
+    }
+
+    .hero-btn {
+        padding: 0.8rem;
+        margin-top: 0.85rem;
+        font-size: 15px;
+    }
+}
+
+/* =========================
+   TABLET & MEDIUM SCREENS (1024px)
+========================= */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .hero-section {
+        height: 90vh;
+        max-width: 100vw;
+        overflow: hidden;
+    }
+
+    .hero-bg-div {
+        background-size: cover;
+        background-position: center 35%;
+    }
+
+    .hero-content-wrapper {
+        padding-top: 6vh;
+        max-width: 100%;
+        overflow: hidden;
+    }
+
+    .hero-content {
+        padding-left: 5%;
+        padding-right: 5%;
+        max-width: 650px;
+    }
+
+    .hero-logos {
+        gap: 1rem;
+        margin-bottom: 1.25rem;
+    }
+
+    .hero-logo {
+        max-height: 8vh;
+    }
+
+    .hero-title {
+        font-size: 42px;
+        line-height: 1.3;
+        margin-bottom: 1rem;
+    }
+
+    .hero-badge {
+        font-size: 18px;
+        padding: 0.5rem 1.25rem;
+    }
+
+    .hero-points li {
+        font-size: 19px;
+        margin-bottom: 0.7rem;
+    }
+
+    .hero-btn {
+        padding: 0.85rem 2rem;
+        font-size: 16px;
+    }
+}
+
+/* =========================
+   LARGE SCREENS (1440px+)
+========================= */
+@media (min-width: 1025px) and (max-width: 1440px) {
+    .hero-section {
+        height: 95vh;
+        max-width: 100vw;
+        overflow: hidden;
+    }
+
+    .hero-bg-div {
+        background-size: cover;
+        background-position: center 35%;
+    }
+
+    .hero-content-wrapper {
+        padding-top: 7vh;
+        max-width: 100%;
+        overflow: hidden;
+    }
+
+    .hero-content {
+        padding-left: 5%;
+        padding-right: 5%;
+        max-width: 700px;
+    }
+
+    .hero-logos {
+        gap: 1.25rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .hero-logo {
+        max-height: 9vh;
+    }
+
+    .hero-title {
+        font-size: 48px;
+        line-height: 1.3;
+    }
+
+    .hero-badge {
+        font-size: 19px;
+    }
+
+    .hero-points li {
+        font-size: 20px;
+    }
+
+    .hero-btn {
+        padding: 0.9rem 2.25rem;
+        font-size: 17px;
+    }
+}
+
+/* =========================
+   EXTRA LARGE SCREENS (1441px+)
+========================= */
+@media (min-width: 1441px) {
+    .hero-section {
+        max-width: 100vw;
+        overflow: hidden;
+    }
+
+    .hero-content-wrapper {
+        max-width: 100%;
+        overflow: hidden;
+    }
+
+    .hero-content {
+        max-width: 800px;
+        padding-left: 6%;
+        padding-right: 6%;
     }
 }
 
